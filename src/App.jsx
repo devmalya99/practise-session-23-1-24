@@ -1,39 +1,30 @@
 import { useState } from 'react'
-import cars from './Cars'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [style, setStyle] = useState({backgroundColor: 'white'})
+  const [mouseLeave,setMouseLeave]=useState(false)
+  function handleButtonHoover()
+  {
+    setStyle({backgroundColor: 'black'})
+  }
 
-  const [honda,tesla]=cars
-
-  const {teslaModel,coloursByPopularity:[teslaTopColour],speedStats:{topSpeed:teslaTopSpeed}}=tesla
-  const {hondaModel,coloursByPopularity:[hondaTopColour],speedStats:{topSpeed:hondaTopSpeed}}=honda
-
+  function handleMouseLeave()
+  {
+    setStyle({backgroundColor:'white'})
+  }
     
   return (
-    <>
-      <h1 className="text-3xl text-center font-bold underline">Vite + React</h1> 
-         <div>
-         <table>
-     <tr>
-       <th>Brand</th>
-       <th>Top Speed</th>
-     </tr>
-    <tr>
-       <td>{tesla.model}</td>
-       <td>{teslaTopSpeed}</td>
-       <td>{teslaTopColour}</td>
-     </tr>
-     <tr>
-       <td>{honda.model}</td>
-       <td>{hondaTopSpeed}</td>
-       <td>{hondaTopColour}</td>
-     </tr>
-   </table>
+    <div className="container">
+      <h1>Hello</h1>
+      <input type="text" placeholder="What's your name?" />
+      <button 
+      style={style}
+      onMouseOver={handleButtonHoover}
+      onMouseLeave={handleMouseLeave}
+      >Submit</button>
     </div>
-    
-    </>
   )
 }
 
